@@ -1,62 +1,66 @@
-"use client";
+'use client';
 
-import { useState } from 'react';
-import * as api from '../services/api';
+import { useState, useEffect } from 'react';
 import { useProductContext } from '../context/ProductContext';
 import { useRouter } from 'next/navigation';
 
 export const useProducts = () => {
-  const { refreshProducts, setLoading } = useProductContext();
-  const [error, setError] = useState(null);
+  const { products, addProduct, updateProduct, deleteProduct } = useProductContext();
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const addProduct = async (productData) => {
-    setLoading(true);
-    try {
-      await api.createProduct(productData);
-      await refreshProducts();
-      router.push('/products');
-    } catch (err) {
-      setError("Erreur lors de l'ajout du produit");
-      throw err;
-    } finally {
+  // Simulation d'un chargement initial (fetch)
+  useEffect(() => {
+    const timer = setTimeout(() => {
       setLoading(false);
-    }
+    }, 1000); // 1 seconde de délai pour simuler l'UI de chargement
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Trouver un produit par ID
+  const getProductById = (id) => {
+    return products.find((p) => p.id === Number(id));
   };
 
-  const editProduct = async (id, productData) => {
+  // Création avec délai simulé
+  const handleAdd = async (productData) => {
     setLoading(true);
-    try {
-      await api.updateProduct(id, productData);
-      await refreshProducts();
-      router.push(`/products/${id}`);
-    } catch (err) {
-      setError("Erreur lors de la modification du produit");
-      throw err;
-    } finally {
+    setTimeout(() => {
+      addProduct(productData);
       setLoading(false);
-    }
+      router.push('/products');
+    }, 800);
   };
 
-  const removeProduct = async (id) => {
-    if (!window.confirm("Voulez-vous vraiment supprimer ce produit ?")) return;
-    
+  // Modification avec délai simulé
+  const handleUpdate = async (productData) => {
     setLoading(true);
-    try {
-      await api.deleteProduct(id);
-      await refreshProducts();
-      router.push('/products');
-    } catch (err) {
-      setError("Erreur lors de la suppression");
-    } finally {
+    setTimeout(() => {
+      updateProduct(productData);
       setLoading(false);
+      router.push(`/products/${productData.id}`);
+    }, 800);
+  };
+
+  // Suppression avec délai simulé
+  const handleDelete = async (id) => {
+    if (confirm('Voulez-vous vraiment supprimer ce produit ?')) {
+      setLoading(true);
+      setTimeout(() => {
+        deleteProduct(id);
+        setLoading(false);
+        router.push('/products');
+      }, 500);
     }
   };
 
   return {
-    addProduct,
-    editProduct,
-    removeProduct,
-    error
+    products,
+    loading,
+    getProductById,
+    handleAdd,
+    handleUpdate,
+    handleDelete,
   };
 };

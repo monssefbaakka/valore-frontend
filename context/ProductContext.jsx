@@ -1,58 +1,51 @@
-"use client";
+'use client';
 
-import React, { createContext, useState, useEffect, useContext } from 'react';
-import * as api from '../services/api';
+import React, { createContext, useState, useContext } from 'react';
+import { initialProducts } from '../data/products';
 
+// Création du contexte
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // État global des produits initialisé avec les données statiques
+  const [products, setProducts] = useState(initialProducts);
 
-  // Charger les produits au montage du composant
-  const fetchProducts = async () => {
-    setLoading(true);
-    try {
-      const data = await api.getAllProducts();
-      setProducts(data);
-      setError(null);
-    } catch (err) {
-      setError("Erreur lors du chargement des produits");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
+  // Fonction pour ajouter un produit
+  const addProduct = (newProduct) => {
+    setProducts((prev) => [...prev, { ...newProduct, id: Date.now() }]);
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  // Fonction pour rafraîchir la liste manuellement après une action CRUD
-  const refreshProducts = async () => {
-    await fetchProducts();
+  // Fonction pour modifier un produit
+  const updateProduct = (updatedProduct) => {
+    setProducts((prev) =>
+      prev.map((p) => (p.id === Number(updatedProduct.id) ? updatedProduct : p))
+    );
   };
 
-  const value = {
-    products,
-    loading,
-    error,
-    refreshProducts,
-    setLoading
+  // Fonction pour supprimer un produit
+  const deleteProduct = (id) => {
+    setProducts((prev) => prev.filter((p) => p.id !== Number(id)));
   };
 
   return (
-    <ProductContext.Provider value={value}>
+    <ProductContext.Provider
+      value={{
+        products,
+        addProduct,
+        updateProduct,
+        deleteProduct,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
 };
 
+// Hook personnalisé interne pour accéder facilement au contexte
 export const useProductContext = () => {
   const context = useContext(ProductContext);
   if (!context) {
-    throw new Error("useProductContext doit être utilisé à l'intérieur d'un ProductProvider");
+    throw new Error('useProductContext doit être utilisé à l\'intérieur de ProductProvider');
   }
   return context;
 };

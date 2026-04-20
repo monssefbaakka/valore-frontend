@@ -1,31 +1,25 @@
-"use client";
-import ProductForm from '../../../components/ProductForm';
-import { useRouter } from 'next/navigation';
+'use client';
 
-export default function NewProduct() {
-  const router = useRouter();
+import { useProducts } from '@/hooks/useProducts';
+import ProductForm from '@/components/ProductForm';
+import Spinner from '@/components/Spinner';
 
-  const handleCreate = async (productData) => {
-    try {
-      const response = await fetch('http://localhost:8080/api/products', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(productData),
-      });
-      if (response.ok) {
-        router.push('/products');
-      } else {
-        alert("Erreur lors de la création");
-      }
-    } catch (err) {
-      alert("Erreur backend");
-    }
-  };
+export default function NewProductPage() {
+  const { handleAdd, loading } = useProducts();
+
+  if (loading) return <Spinner />;
 
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold text-center mb-10 text-white">Créer un nouveau bijou digital</h1>
-      <ProductForm onSubmit={handleCreate} buttonText="Publier sur Valoré" />
+    <div className="py-12">
+      <div className="mb-12 text-center">
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Ajouter un produit</h1>
+        <p className="text-zinc-500">Remplissez les détails ci-dessous pour publier une nouvelle ressource.</p>
+      </div>
+      
+      <ProductForm 
+        onSubmit={handleAdd} 
+        formTitle="Détails de la ressource" 
+      />
     </div>
   );
 }

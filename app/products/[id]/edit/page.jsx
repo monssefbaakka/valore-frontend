@@ -1,36 +1,38 @@
-"use client";
-import { useParams, useRouter } from 'next/navigation';
-import { useFetch } from '../../../hooks/useFetch';
-import ProductForm from '../../../components/ProductForm';
+'use client';
 
-export default function EditProduct() {
+import { useParams } from 'next/navigation';
+import { useProducts } from '@/hooks/useProducts';
+import ProductForm from '@/components/ProductForm';
+import Spinner from '@/components/Spinner';
+
+export default function EditProductPage() {
   const { id } = useParams();
-  const router = useRouter();
-  const { data: product, isLoading } = useFetch(`http://localhost:8080/api/products/${id}`);
+  const { getProductById, handleUpdate, loading } = useProducts();
 
-  const handleUpdate = async (updatedData) => {
-    try {
-      const response = await fetch(`http://localhost:8080/api/products/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedData),
-      });
-      if (response.ok) {
-        router.push('/products');
-      } else {
-        alert("Erreur lors de la mise à jour");
-      }
-    } catch (err) {
-      alert("Erreur backend");
-    }
-  };
+  const product = getProductById(id);
 
-  if (isLoading) return <p className="text-center mt-20 text-white">Chargement...</p>;
+  if (loading) return <Spinner />;
+
+  if (!product) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold">Produit introuvable.</h2>
+      </div>
+    );
+  }
 
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold text-center mb-10 text-white">Modifier le produit</h1>
-      {product && <ProductForm initialData={product} onSubmit={handleUpdate} buttonText="Enregistrer les modifications" />}
+    <div className="py-12">
+      <div className="mb-12 text-center">
+        <h1 className="text-3xl font-bold tracking-tight mb-2">Modifier la ressource</h1>
+        <p className="text-zinc-500">Mettez à jour les informations de <span className="text-white">"{product.title}"</span></p>
+      </div>
+      
+      <ProductForm 
+        initialData={product} 
+        onSubmit={handleUpdate} 
+        formTitle="Édition du produit" 
+      />
     </div>
   );
 }

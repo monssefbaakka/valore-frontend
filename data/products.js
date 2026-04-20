@@ -1,52 +1,55 @@
-// data/products.js
+/**
+ * Base de données fictive pour Valoré
+ * Produits digitaux : Guides PDF, Templates, Mini-cours
+ */
 
 export const initialProducts = [
   {
     id: 1,
-    title: "Guide Nomad Digital 2024",
-    description: "Tout ce qu'il faut savoir pour travailler de n'importe où dans le monde : visas, fiscalité, et meilleures destinations.",
-    price: 49.99,
-    category: "Voyage",
-    imageUrl: "https://images.unsplash.com/photo-1512485694743-9c9538b4e6e0?q=80&w=800&auto=format&fit=crop"
+    title: "Mastering Consistency",
+    description: "Un guide complet de 50 pages pour hacker votre discipline et atteindre vos objectifs long terme.",
+    price: 29.99,
+    category: "Motivation",
+    imageUrl: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 2,
-    title: "Template Notion Lifestyle",
-    description: "Organisez votre vie, vos habitudes et vos objectifs annuels avec ce template ultra-complet et minimaliste.",
-    price: 19.00,
-    category: "Lifestyle",
-    imageUrl: "https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=800&auto=format&fit=crop"
+    title: "Nomad Life OS",
+    description: "Template Notion ultime pour organiser vos voyages, vos finances et votre travail en remote.",
+    price: 45.00,
+    category: "Travel",
+    imageUrl: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 3,
-    title: "Mini-Cours : Discipline de Fer",
-    description: "Apprenez les 5 piliers de la discipline pour transformer vos routines matinales et exploser votre productivité.",
-    price: 89.00,
-    category: "Motivation",
-    imageUrl: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=800&auto=format&fit=crop"
+    title: "Morning Rituals Mini-Course",
+    description: "Série de 5 vidéos pour transformer vos premières 60 minutes de la journée.",
+    price: 19.00,
+    category: "Lifestyle",
+    imageUrl: "https://images.unsplash.com/photo-1506485338023-6ce5f36692df?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 4,
-    title: "Pack Presets Lightroom 'Aura'",
-    description: "Donnez un look professionnel et chaleureux à vos photos de voyage en un seul clic.",
-    price: 25.00,
-    category: "Lifestyle",
-    imageUrl: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=800&auto=format&fit=crop"
+    title: "The Solopreneur Guide",
+    description: "Tout ce qu'il faut savoir pour lancer son business digital en voyageant à travers le monde.",
+    price: 35.00,
+    category: "Motivation",
+    imageUrl: "https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 5,
-    title: "E-book : 50 Sources de Revenus Passifs",
-    description: "Le guide ultime pour diversifier ses revenus grâce aux produits digitaux et à l'affiliation.",
-    price: 34.50,
-    category: "Business",
-    imageUrl: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=800&auto=format&fit=crop"
+    title: "Minimalist Pack Photos",
+    description: "Pack de 50 presets Lightroom et photos d'ambiance pour vos réseaux sociaux lifestyle.",
+    price: 12.50,
+    category: "Lifestyle",
+    imageUrl: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 6,
-    title: "Journal de Manifestation PDF",
-    description: "30 pages d'exercices guidés pour clarifier vos intentions et attirer ce que vous désirez.",
-    price: 12.99,
-    category: "Motivation",
-    imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop"
+    title: "Destination: Freedom",
+    description: "Plan d'action pour économiser et partir faire un tour du monde en 12 mois.",
+    price: 24.00,
+    category: "Travel",
+    imageUrl: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=800&auto=format&fit=crop"
   }
 ];

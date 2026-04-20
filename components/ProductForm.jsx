@@ -1,113 +1,140 @@
-"use client";
-import { useState } from 'react';
+'use client';
 
-const ProductForm = ({ initialData, onSubmit, buttonText }) => {
-  const [product, setProduct] = useState(initialData || {
-    title: '',
-    description: '',
-    price: 0,
-    category: 'Templates',
-    imageUrl: ''
+import { useState } from 'react';
+import { Save, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+
+const ProductForm = ({ initialData = {}, onSubmit, formTitle }) => {
+  const router = useRouter();
+  
+  // État local du formulaire
+  const [formData, setFormData] = useState({
+    title: initialData.title || '',
+    description: initialData.description || '',
+    price: initialData.price || '',
+    category: initialData.category || 'Motivation',
+    imageUrl: initialData.imageUrl || '',
+    ...initialData
   });
 
   const [errors, setErrors] = useState({});
 
+  // Gestion des changements d'inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProduct({ ...product, [name]: name === 'price' ? parseFloat(value) : value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Validation simple
   const validate = () => {
-    let tempErrors = {};
-    if (!product.title) tempErrors.title = "Le titre est requis";
-    if (product.price <= 0) tempErrors.price = "Le prix doit être supérieur à 0";
-    if (!product.imageUrl) tempErrors.imageUrl = "L'URL de l'image est requise";
-    setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0;
+    let newErrors = {};
+    if (!formData.title) newErrors.title = "Le titre est requis";
+    if (!formData.description) newErrors.description = "La description est requise";
+    if (!formData.price || formData.price <= 0) newErrors.price = "Prix invalide";
+    if (!formData.imageUrl) newErrors.imageUrl = "L'URL de l'image est requise";
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      onSubmit(product);
+      onSubmit(formData);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 shadow-xl max-w-2xl mx-auto">
-      <div className="space-y-6">
-        <div>
-          <label className="block text-sm font-medium mb-2">Titre du produit</label>
+    <div className="max-w-2xl mx-auto bg-zinc-900 border border-zinc-800 p-8 rounded-3xl">
+      <h2 className="text-2xl font-bold text-white mb-8">{formTitle}</h2>
+      
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Titre */}
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-zinc-400">Titre du produit</label>
           <input
             type="text"
             name="title"
-            value={product.title}
+            value={formData.title}
             onChange={handleChange}
-            className="w-full bg-black/20 border border-white/10 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 outline-none transition text-white"
-            placeholder="Ex: Guide Travel Hack Bali"
+            placeholder="Ex: Guide de méditation"
+            className={`w-full bg-zinc-950 border ${errors.title ? 'border-red-500' : 'border-zinc-800'} text-white rounded-xl px-4 py-3 focus:outline-none focus:border-white transition-colors`}
           />
-          {errors.title && <p className="text-red-400 text-xs mt-1">{errors.title}</p>}
+          {errors.title && <span className="text-xs text-red-500">{errors.title}</span>}
         </div>
 
-        <div>
-          <label className="block text-sm font-medium mb-2">Description</label>
-          <textarea
-            name="description"
-            value={product.description}
-            onChange={handleChange}
-            rows="4"
-            className="w-full bg-black/20 border border-white/10 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 outline-none transition text-white"
-          />
-        </div>
-
+        {/* Prix & Catégorie */}
         <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium mb-2 text-white">Prix (€)</label>
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-zinc-400">Prix (€)</label>
             <input
               type="number"
               name="price"
-              value={product.price}
+              value={formData.price}
               onChange={handleChange}
-              className="w-full bg-black/20 border border-white/10 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 outline-none transition text-white"
+              step="0.01"
+              className={`w-full bg-zinc-950 border ${errors.price ? 'border-red-500' : 'border-zinc-800'} text-white rounded-xl px-4 py-3 focus:outline-none focus:border-white transition-colors`}
             />
-            {errors.price && <p className="text-red-400 text-xs mt-1">{errors.price}</p>}
           </div>
-
-          <div>
-            <label className="block text-sm font-medium mb-2 text-white">Catégorie</label>
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-zinc-400">Catégorie</label>
             <select
               name="category"
-              value={product.category}
+              value={formData.category}
               onChange={handleChange}
-              className="w-full bg-black/20 border border-white/10 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 outline-none transition text-white"
+              className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-white transition-colors"
             >
-              <option value="PDF">Guide PDF</option>
-              <option value="Templates">Templates</option>
-              <option value="Cours">Mini-Cours</option>
+              <option value="Motivation">Motivation</option>
+              <option value="Travel">Travel</option>
+              <option value="Lifestyle">Lifestyle</option>
             </select>
           </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium mb-2 text-white">URL de l'image</label>
+        {/* Image URL */}
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-zinc-400">URL de l'image (Unsplash)</label>
           <input
             type="text"
             name="imageUrl"
-            value={product.imageUrl}
+            value={formData.imageUrl}
             onChange={handleChange}
-            className="w-full bg-black/20 border border-white/10 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 outline-none transition text-white"
+            placeholder="https://images.unsplash.com/..."
+            className={`w-full bg-zinc-950 border ${errors.imageUrl ? 'border-red-500' : 'border-zinc-800'} text-white rounded-xl px-4 py-3 focus:outline-none focus:border-white transition-colors`}
           />
-          {errors.imageUrl && <p className="text-red-400 text-xs mt-1">{errors.imageUrl}</p>}
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold py-3 rounded-lg shadow-lg transform transition active:scale-95"
-        >
-          {buttonText}
-        </button>
-      </div>
-    </form>
+        {/* Description */}
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-zinc-400">Description</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            rows="4"
+            className={`w-full bg-zinc-950 border ${errors.description ? 'border-red-500' : 'border-zinc-800'} text-white rounded-xl px-4 py-3 focus:outline-none focus:border-white transition-colors`}
+          ></textarea>
+        </div>
+
+        {/* Boutons */}
+        <div className="flex gap-4 pt-4">
+          <button
+            type="submit"
+            className="flex-1 bg-white text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all active:scale-95"
+          >
+            <Save size={18} />
+            Enregistrer le produit
+          </button>
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="px-6 bg-zinc-800 text-white rounded-xl hover:bg-zinc-700 transition-colors"
+          >
+             Annuler
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
