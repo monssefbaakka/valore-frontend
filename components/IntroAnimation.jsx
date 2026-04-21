@@ -35,20 +35,19 @@ const IntroAnimation = () => {
       </div>
 
       {/* Main Content Container with Camera Push-In */}
-      <div className={`transition-transform duration-[8000ms] ease-out-expo px-4 ${isVisible ? 'scale-110' : 'scale-100'}`}>
-        <div className="flex flex-wrap justify-center items-center tracking-[0.3em] md:tracking-[0.6em]">
+      <div className={`transition-transform duration-[10000ms] ease-out-expo px-4 ${isVisible ? 'scale-125' : 'scale-100'}`}>
+        <div className="flex flex-nowrap whitespace-nowrap justify-center items-center tracking-[0.2em] md:tracking-[0.4em] font-serif uppercase italic w-full">
           {letters.map((char, index) => (
             <span
               key={index}
               className={`
-                relative text-4xl md:text-7xl font-bold transition-all duration-1000
-                ${char === " " ? "w-8 md:w-16" : ""}
-                ${isVisible ? 'opacity-100 translate-y-0 text-gold-molten' : 'opacity-0 translate-y-4'}
+                relative text-2xl sm:text-4xl md:text-7xl lg:text-8xl font-medium transition-all duration-[2000ms]
+                ${char === " " ? "w-4 md:w-16" : ""}
+                ${isVisible ? 'opacity-100 translate-y-0 text-gold-molten' : 'opacity-0 translate-y-12 blur-md'}
               `}
               style={{ 
-                transitionDelay: `${index * 150}ms`,
-                // Molten gold text shadow effect
-                textShadow: isVisible ? '0 0 20px rgba(234, 179, 8, 0.4), 0 0 40px rgba(180, 83, 9, 0.2)' : 'none'
+                transitionDelay: `${index * 120}ms`,
+                textShadow: isVisible ? '0 0 30px rgba(234, 179, 8, 0.3)' : 'none'
               }}
             >
               {char}
