@@ -76,7 +76,7 @@ export default function Login() {
             {isLogin ? 'Connexion' : 'Inscription'}
           </h1>
           <p className="text-zinc-500 text-sm">
-            {isLogin ? 'Accédez à votre espace membre' : 'Rejoignez la communauté Valoré'}
+            {isLogin ? 'Accédez à votre espace membre' : 'Rejoignez la communauté Veloir'}
           </p>
         </div>
 

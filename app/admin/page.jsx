@@ -36,7 +36,7 @@ export default function AdminDashboard() {
         <div className="bg-zinc-900 border border-zinc-800 p-6 sticky top-32">
           <div className="mb-8">
             <span className="bg-primary-light/20 text-primary-light uppercase tracking-widest text-[10px] font-bold px-2 py-1 mb-2 inline-block">Mode Admin</span>
-            <h2 className="font-display text-xl font-bold text-white">Valoré Admin</h2>
+            <h2 className="font-display text-xl font-bold text-white">Veloir Admin</h2>
           </div>
 
           <nav className="space-y-1">

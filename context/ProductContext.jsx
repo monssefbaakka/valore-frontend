@@ -1,9 +1,17 @@
 'use client';
 
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 export const ProductContext = createContext();
+
+export const useProductContext = () => {
+    const context = useContext(ProductContext);
+    if (!context) {
+        throw new Error('useProductContext must be used within a ProductProvider');
+    }
+    return context;
+};
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
@@ -32,8 +40,28 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  const addProduct = (product) => {
+    const newProduct = { ...product, id: Date.now() };
+    setProducts([...products, newProduct]);
+  };
+
+  const updateProduct = (updatedProduct) => {
+    setProducts(products.map(p => p.id === updatedProduct.id ? updatedProduct : p));
+  };
+
+  const deleteProduct = (id) => {
+    setProducts(products.filter(p => p.id !== id));
+  };
+
   return (
-    <ProductContext.Provider value={{ products, loading, fetchProducts }}>
+    <ProductContext.Provider value={{ 
+      products, 
+      loading, 
+      fetchProducts,
+      addProduct,
+      updateProduct,
+      deleteProduct
+    }}>
       {children}
     </ProductContext.Provider>
   );

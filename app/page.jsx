@@ -76,7 +76,7 @@ export default function Home() {
               Des millions de vues sur TikTok m'ont appris une chose : l'attention est le nouvel or.
             </p>
             <p className="text-zinc-400 text-lg leading-relaxed mb-8">
-              J'ai fondé Valoré pour partager mes secrets via des guides exclusifs, et mettre mes compétences en 
+              J'ai fondé Veloir pour partager mes secrets via des guides exclusifs, et mettre mes compétences en 
               filming et montage à votre disposition. Que vous souhaitiez apprendre ou déléguer, vous êtes au bon endroit.
             </p>
             <div className="grid grid-cols-2 gap-8">
@@ -119,7 +119,7 @@ export default function Home() {
       {/* TIKTOK REVIEWS / EMBEDS SECTION */}
       <section className="py-24 bg-zinc-950 overflow-hidden">
         <div className="container mx-auto px-6">
-          <h2 className="font-display text-center text-3xl md:text-5xl font-bold text-white mb-16">Ils parlent de Valoré</h2>
+          <h2 className="font-display text-center text-3xl md:text-5xl font-bold text-white mb-16">Ils parlent de Veloir</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((_, i) => (
@@ -147,7 +147,7 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10 max-w-3xl text-center">
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-6">Rejoignez l'Élite.</h2>
           <p className="text-zinc-300 mb-10 text-lg">
-            Abonnez-vous à la newsletter pour recevoir des tips exclusifs sur la création de contenu, les offres Valoré et des coupons secrets.
+            Abonnez-vous à la newsletter pour recevoir des tips exclusifs sur la création de contenu, les offres Veloir et des coupons secrets.
           </p>
           <form className="flex flex-col sm:flex-row gap-4 justify-center">
             <input 
