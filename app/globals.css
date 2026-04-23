@@ -43,3 +43,23 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #8b5cf6;
 }
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg, 
+    #71717a 0%, 
+    #71717a 40%, 
+    #ffffff 50%, 
+    #71717a 60%, 
+    #71717a 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+  display: inline-block;
+}

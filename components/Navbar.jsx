@@ -15,13 +15,17 @@ export default function Navbar() {
   const links = [
     { href: '/', label: 'Home' },
     { href: '/shop', label: 'Boutique' },
+    { href: '/mindset', label: 'Mindset' },
     { href: '/studio', label: 'Studio' },
   ];
 
   return (
     <nav className="fixed w-full z-50 top-0 bg-background/80 backdrop-blur-md border-b border-border transition-all">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="font-display text-2xl font-bold tracking-widest text-white uppercase flex items-center gap-2">
+        <Link href="/" className={clsx(
+          "font-display text-2xl font-bold tracking-widest uppercase flex items-center gap-2",
+          pathname === '/' ? "animate-shimmer" : "text-white"
+        )}>
           Veloir
         </Link>
 

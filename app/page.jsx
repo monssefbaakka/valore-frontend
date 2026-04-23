@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Star, Video, Download } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
+import CinematicDivider from '@/components/CinematicDivider';
 
 // Dummy data for products featured
 const featuredProducts = [
@@ -26,7 +27,7 @@ export default function Home() {
         <div className="container relative z-10 mx-auto px-6 flex flex-col justify-center items-center text-center animate-fade-in">
           <span className="text-primary-light uppercase tracking-[0.3em] text-sm mb-6 font-semibold">@drogow Présente</span>
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-8">
-            HYBRID VISION.
+            <span className="animate-shimmer">HYBRID VISION.</span>
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-zinc-500">
               CREATE INFINITY.
@@ -49,6 +50,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <CinematicDivider />
 
       {/* ABOUT SECTION */}
       <section className="py-24 bg-zinc-950">
@@ -95,6 +98,8 @@ export default function Home() {
         </div>
       </section>
 
+      <CinematicDivider />
+
       {/* FEATURED PRODUCTS */}
       <section className="py-24 bg-[#0d0d0d] border-y border-zinc-900">
         <div className="container mx-auto px-6">
@@ -115,6 +120,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <CinematicDivider />
 
       {/* TIKTOK REVIEWS / EMBEDS SECTION */}
       <section className="py-24 bg-zinc-950 overflow-hidden">
@@ -140,6 +147,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <CinematicDivider />
 
       {/* NEWSLETTER */}
       <section className="py-24 bg-primary-dark relative overflow-hidden">

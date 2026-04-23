@@ -76,3 +76,30 @@ export const deleteProduct = async (id) => {
     mockProducts = mockProducts.filter(p => p.id !== parseInt(id));
     return mockProducts.length < initialLength;
 };
+
+/**
+ * QUOTES SECTION
+ */
+export const getAllQuotes = async () => {
+    try {
+        const res = await fetch(`${BASE_URL}/quotes`);
+        if (!res.ok) return [];
+        return await res.json();
+    } catch (error) {
+        console.error("Error fetching quotes:", error);
+        return [];
+    }
+};
+
+export const createQuote = async (quoteData, token) => {
+    const res = await fetch(`${BASE_URL}/quotes`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(quoteData)
+    });
+    if (!res.ok) throw new Error("Failed to create quote");
+    return await res.json();
+};
