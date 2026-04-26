@@ -1,13 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #0A0A0A;
+  --foreground: #ffffff;
+  --neon-purple: #7C3AED;
+  --neon-blue: #00D1FF;
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-neon: var(--neon-purple);
+  --color-secondary-neon: var(--neon-blue);
+  --color-primary-light: var(--neon-purple); /* For backwards compat in the project */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
 }
@@ -16,8 +21,101 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    @apply font-sans antialiased selection:bg-purple-500/30;
+    @apply font-sans antialiased;
+    selection-background-color: rgba(124, 58, 237, 0.3);
   }
+}
+
+/* Automotive Luxury Effects */
+.stitch-border {
+  position: relative;
+}
+.stitch-border::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px dashed rgba(124, 58, 237, 0.4);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+.stitch-border:hover::after {
+  border-color: rgba(0, 209, 255, 0.7);
+  box-shadow: inset 0 0 10px rgba(0, 209, 255, 0.3);
+}
+
+.glow-line-bottom {
+  position: relative;
+}
+.glow-line-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-purple), var(--neon-blue), transparent);
+  box-shadow: 0 1px 8px var(--neon-purple);
+}
+
+.glow-line-top {
+  position: relative;
+}
+.glow-line-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-purple), var(--neon-blue), transparent);
+  box-shadow: 0 -1px 8px var(--neon-purple);
+}
+
+/* Luxury Button */
+.luxury-btn {
+  background-color: transparent !important;
+  border: 1px solid var(--neon-purple);
+  color: #ffffff !important;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.15);
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.luxury-btn:hover {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.6), inset 0 0 12px rgba(124, 58, 237, 0.4);
+  border-color: var(--neon-blue);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* Luxury Card */
+.luxury-card {
+  background: #0A0A0A !important;
+  border: 1px solid rgba(124, 58, 237, 0.2) !important;
+  border-radius: 12px !important;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+.luxury-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.6) !important;
+}
+
+/* Links Hover */
+.glow-text-hover {
+  transition: all 0.3s ease;
+}
+.glow-text-hover:hover {
+  color: var(--neon-purple);
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.6);
 }
 
 /* Animations cinématiques */
@@ -35,13 +133,13 @@
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #0A0A0A;
 }
 ::-webkit-scrollbar-thumb {
   background: #333;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8b5cf6;
+  background: var(--neon-purple);
 }
 @keyframes shimmer {
   0% { background-position: -200% center; }
@@ -51,11 +149,11 @@
 .animate-shimmer {
   background: linear-gradient(
     90deg, 
-    #71717a 0%, 
-    #71717a 40%, 
+    #A1A1AA 0%, 
+    #A1A1AA 40%, 
     #ffffff 50%, 
-    #71717a 60%, 
-    #71717a 100%
+    #A1A1AA 60%, 
+    #A1A1AA 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
