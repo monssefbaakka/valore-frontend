@@ -18,6 +18,7 @@ export default function Navbar() {
     { href: '/mindset', label: 'Mindset' },
     { href: '/studio', label: 'Studio' },
     { href: '/stories', label: 'Stories' },
+    { href: '/battle', label: 'Battle' },
   ];
 
   return (
