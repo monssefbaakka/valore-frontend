@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowRight, Star, Video, Download } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import CinematicDivider from '@/components/CinematicDivider';
+import ShowcaseSection from '@/components/ShowcaseSection';
 
 // Dummy data for products featured
 const featuredProducts = [
@@ -121,6 +122,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="glow-line-bottom w-full"></div>
+
+      {/* SHOWCASE SECTION */}
+      <ShowcaseSection />
 
       <div className="glow-line-bottom w-full"></div>
 

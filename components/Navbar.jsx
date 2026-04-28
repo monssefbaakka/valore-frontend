@@ -19,6 +19,7 @@ export default function Navbar() {
     { href: '/studio', label: 'Studio' },
     { href: '/stories', label: 'Stories' },
     { href: '/battle', label: 'Battle' },
+    { href: '/#showcase', label: 'Showcase' },
   ];
 
   return (
