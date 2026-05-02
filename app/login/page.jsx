@@ -33,7 +33,7 @@ export default function Login() {
       });
 
       if (res?.error) {
-        setError('Email ou mot de passe incorrect');
+        setError('Incorrect email or password');
         setLoading(false);
       } else {
         router.push(callbackUrl);
@@ -58,10 +58,10 @@ export default function Login() {
             router.push(callbackUrl);
           }
         } else {
-          setError("L'inscription a échoué. Cet email est peut-être déjà utilisé.");
+          setError("Registration failed. This email may already be in use.");
         }
       } catch (err) {
-        setError("Erreur serveur.");
+        setError("Server error.");
       } finally {
         setLoading(false);
       }
@@ -73,10 +73,10 @@ export default function Login() {
       <div className="w-full max-w-md bg-zinc-900/50 p-8 border border-zinc-800 backdrop-blur">
         <div className="text-center mb-10">
           <h1 className="font-display text-3xl font-bold text-white uppercase tracking-widest mb-2">
-            {isLogin ? 'Connexion' : 'Inscription'}
+            {isLogin ? 'Login' : 'Sign Up'}
           </h1>
           <p className="text-zinc-500 text-sm">
-            {isLogin ? 'Accédez à votre espace membre' : 'Rejoignez la communauté Veloir'}
+            {isLogin ? 'Access your member area' : 'Join the Veloir community'}
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export default function Login() {
           {!isLogin && (
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-zinc-400 text-xs uppercase tracking-widest mb-2">Prénom</label>
+                <label className="block text-zinc-400 text-xs uppercase tracking-widest mb-2">First Name</label>
                 <input 
                   type="text" 
                   required
@@ -100,7 +100,7 @@ export default function Login() {
                 />
               </div>
               <div>
-                <label className="block text-zinc-400 text-xs uppercase tracking-widest mb-2">Nom</label>
+                <label className="block text-zinc-400 text-xs uppercase tracking-widest mb-2">Last Name</label>
                 <input 
                   type="text" 
                   required
@@ -122,7 +122,7 @@ export default function Login() {
             />
           </div>
           <div>
-            <label className="block text-zinc-400 text-xs uppercase tracking-widest mb-2">Mot de passe</label>
+            <label className="block text-zinc-400 text-xs uppercase tracking-widest mb-2">Password</label>
             <input 
               type="password" 
               required
@@ -137,18 +137,18 @@ export default function Login() {
             disabled={loading}
             className="w-full bg-white text-black py-4 mt-4 uppercase font-bold tracking-widest hover:bg-zinc-200 transition-colors disabled:opacity-50"
           >
-            {loading ? 'Patientez...' : (isLogin ? 'Se connecter' : "S'inscrire")}
+            {loading ? 'Please wait...' : (isLogin ? 'Login' : "Sign Up")}
           </button>
         </form>
 
         <div className="mt-8 text-center border-t border-zinc-800 pt-6">
           <p className="text-zinc-500 text-sm">
-            {isLogin ? "Vous n'avez pas de compte ?" : "Vous avez déjà un compte ?"}
+            {isLogin ? "Don't have an account?" : "Already have an account?"}
             <button 
               onClick={() => setIsLogin(!isLogin)}
               className="text-white hover:text-primary-light ml-2 font-semibold transition-colors"
             >
-              {isLogin ? "S'inscrire" : "Se connecter"}
+              {isLogin ? "Sign Up" : "Login"}
             </button>
           </p>
         </div>

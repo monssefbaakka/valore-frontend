@@ -61,10 +61,10 @@ export default function QuoteBattle() {
         // End phase 1, transition to phase 2
         let currentQuotes = [...prev.quotes];
         if (currentQuotes.length < 4) {
-           currentQuotes.push({ id: 'm1', text: "L'ÉCHEC N'EST QU'UNE INFORMATION.", author: "AURELIUS", votes: 0 });
-           currentQuotes.push({ id: 'm2', text: "LA DOULEUR EST TEMPORAIRE, LA GLOIRE EST ÉTERNELLE.", author: "DROGOW", votes: 0 });
-           currentQuotes.push({ id: 'm3', text: "ON NE NAÎT PAS FORT, ON LE DEVIENT.", author: "FAN1", votes: 0 });
-           currentQuotes.push({ id: 'm4', text: "LE SUCCÈS EST LA SEULE VENGEANCE.", author: "FAN2", votes: 0 });
+           currentQuotes.push({ id: 'm1', text: "FAILURE IS JUST INFORMATION.", author: "AURELIUS", votes: 0 });
+           currentQuotes.push({ id: 'm2', text: "PAIN IS TEMPORARY, GLORY IS ETERNAL.", author: "DROGOW", votes: 0 });
+           currentQuotes.push({ id: 'm3', text: "WE ARE NOT BORN STRONG, WE BECOME IT.", author: "FAN1", votes: 0 });
+           currentQuotes.push({ id: 'm4', text: "SUCCESS IS THE ONLY REVENGE.", author: "FAN2", votes: 0 });
         }
         
         // Create random matches

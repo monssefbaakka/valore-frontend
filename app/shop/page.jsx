@@ -22,8 +22,8 @@ export default function Shop() {
     <div className="pt-32 pb-24 min-h-screen">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in">
-          <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-widest">La Boutique</h1>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">Découvrez mes ressources digitales pour accélérer votre progression.</p>
+          <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 uppercase tracking-widest">The Shop</h1>
+          <p className="text-zinc-400 max-w-2xl mx-auto text-lg">Discover my digital resources to accelerate your progress.</p>
         </div>
 
         {/* Filters & Search */}
@@ -49,7 +49,7 @@ export default function Shop() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
             <input 
               type="text" 
-              placeholder="Rechercher..." 
+              placeholder="Search..." 
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full bg-zinc-950 border border-zinc-800 text-white pl-10 pr-4 py-3 focus:outline-none focus:border-primary-light transition-colors"
@@ -66,7 +66,7 @@ export default function Shop() {
           <>
             {filteredProducts.length === 0 ? (
               <div className="text-center py-24 text-zinc-500">
-                Aucun produit ne correspond à vos critères.
+                No products match your criteria.
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">

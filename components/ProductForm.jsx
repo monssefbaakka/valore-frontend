@@ -28,10 +28,10 @@ const ProductForm = ({ initialData = {}, onSubmit, formTitle }) => {
   // Validation simple
   const validate = () => {
     let newErrors = {};
-    if (!formData.title) newErrors.title = "Le titre est requis";
-    if (!formData.description) newErrors.description = "La description est requise";
-    if (!formData.price || formData.price <= 0) newErrors.price = "Prix invalide";
-    if (!formData.imageUrl) newErrors.imageUrl = "L'URL de l'image est requise";
+    if (!formData.title) newErrors.title = "Title is required";
+    if (!formData.description) newErrors.description = "Description is required";
+    if (!formData.price || formData.price <= 0) newErrors.price = "Invalid price";
+    if (!formData.imageUrl) newErrors.imageUrl = "Image URL is required";
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -51,13 +51,13 @@ const ProductForm = ({ initialData = {}, onSubmit, formTitle }) => {
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Titre */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-zinc-400">Titre du produit</label>
+          <label className="text-sm font-medium text-zinc-400">Product Title</label>
           <input
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
-            placeholder="Ex: Guide de méditation"
+            placeholder="Ex: Meditation Guide"
             className={`w-full bg-zinc-950 border ${errors.title ? 'border-red-500' : 'border-zinc-800'} text-white rounded-xl px-4 py-3 focus:outline-none focus:border-white transition-colors`}
           />
           {errors.title && <span className="text-xs text-red-500">{errors.title}</span>}
@@ -66,7 +66,7 @@ const ProductForm = ({ initialData = {}, onSubmit, formTitle }) => {
         {/* Prix & Catégorie */}
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-zinc-400">Prix (€)</label>
+            <label className="text-sm font-medium text-zinc-400">Price (€)</label>
             <input
               type="number"
               name="price"
@@ -77,7 +77,7 @@ const ProductForm = ({ initialData = {}, onSubmit, formTitle }) => {
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-zinc-400">Catégorie</label>
+            <label className="text-sm font-medium text-zinc-400">Category</label>
             <select
               name="category"
               value={formData.category}
@@ -93,7 +93,7 @@ const ProductForm = ({ initialData = {}, onSubmit, formTitle }) => {
 
         {/* Image URL */}
         <div className="space-y-2">
-          <label className="text-sm font-medium text-zinc-400">URL de l'image (Unsplash)</label>
+          <label className="text-sm font-medium text-zinc-400">Image URL (Unsplash)</label>
           <input
             type="text"
             name="imageUrl"
@@ -123,14 +123,14 @@ const ProductForm = ({ initialData = {}, onSubmit, formTitle }) => {
             className="flex-1 bg-white text-black font-bold py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all active:scale-95"
           >
             <Save size={18} />
-            Enregistrer le produit
+            Save Product
           </button>
           <button
             type="button"
             onClick={() => router.back()}
             className="px-6 bg-zinc-800 text-white rounded-xl hover:bg-zinc-700 transition-colors"
           >
-             Annuler
+             Cancel
           </button>
         </div>
       </form>

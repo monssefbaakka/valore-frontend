@@ -8,7 +8,7 @@ const row1Items = [
   {
     id: 11,
     title: 'Cinematic Travel Reel',
-    category: 'Montage Vidéo',
+    category: 'Video Editing',
     views: '2.3M',
     tag: 'TikTok',
     icon: Play,
@@ -18,7 +18,7 @@ const row1Items = [
   {
     id: 12,
     title: 'Brand Identity — NOIR',
-    category: 'Direction Créative',
+    category: 'Creative Direction',
     views: '890K',
     tag: 'Studio',
     icon: ExternalLink,
@@ -38,7 +38,7 @@ const row1Items = [
   {
     id: 14,
     title: 'Product Launch — ELITE',
-    category: 'Contenu Commercial',
+    category: 'Commercial Content',
     views: '4.5M',
     tag: 'Campagne',
     icon: ExternalLink,
@@ -48,7 +48,7 @@ const row1Items = [
   {
     id: 15,
     title: 'Night City Timelapses',
-    category: 'Cinématographie',
+    category: 'Cinematography',
     views: '3.2M',
     tag: 'TikTok',
     icon: Play,
@@ -62,7 +62,7 @@ const row2Items = [
   {
     id: 21,
     title: 'Neon Tokyo Nights',
-    category: 'Photographie',
+    category: 'Photography',
     views: '1.5M',
     tag: 'Urban',
     icon: Camera,
@@ -74,7 +74,7 @@ const row2Items = [
     title: 'Editorial Portrait',
     category: 'Shooting',
     views: '650K',
-    tag: 'Mode',
+    tag: 'Fashion',
     icon: Camera,
     image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80',
     accent: '#7C3AED',
@@ -82,7 +82,7 @@ const row2Items = [
   {
     id: 23,
     title: 'Supercar Aesthetics',
-    category: 'Automobile',
+    category: 'Automotive',
     views: '2.8M',
     tag: 'Commercial',
     icon: Camera,
@@ -104,7 +104,7 @@ const row2Items = [
     title: 'Street Culture',
     category: 'Reportage',
     views: '1.8M',
-    tag: 'Documentaire',
+    tag: 'Documentary',
     icon: Camera,
     image: 'https://images.unsplash.com/photo-1517598024396-46c53fb3afbe?w=800&q=80',
     accent: '#00D1FF',
@@ -165,7 +165,7 @@ export default function ShowcaseSection() {
             <div className="flex items-center gap-4 text-xs text-zinc-500">
               <span className="flex items-center gap-1">
                 <Eye className="w-3 h-3" />
-                {item.views} vues
+                {item.views} views
               </span>
               <div
                 className="h-px flex-1"
@@ -212,7 +212,7 @@ export default function ShowcaseSection() {
         <div className="flex flex-col md:flex-row justify-between items-end">
           <div>
             <span className="text-[#00D1FF] uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">
-              Portfolio Créatif & Photographie
+              Creative Portfolio & Photography
             </span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
               Showcase
@@ -220,8 +220,8 @@ export default function ShowcaseSection() {
             <div className="w-12 h-1 bg-gradient-to-r from-[#7C3AED] to-[#00D1FF] rounded" />
           </div>
           <p className="text-[#A1A1AA] max-w-md text-sm mt-6 md:mt-0 leading-relaxed">
-            Une collection visuelle de montages percutants et de photographies immersives. 
-            Deux mondes, une seule vision artistique.
+            A visual collection of impactful edits and immersive photography. 
+            Two worlds, one artistic vision.
           </p>
         </div>
       </div>
@@ -250,7 +250,7 @@ export default function ShowcaseSection() {
 
       <div className="mt-20 text-center relative z-10">
         <p className="text-zinc-600 text-sm uppercase tracking-widest">
-          L'intégralité de ces visuels a été réalisée par le{' '}
+          All of these visuals were created by the{' '}
           <span className="text-[#7C3AED] font-semibold glow-text-hover cursor-pointer">Studio Veloir</span>
         </p>
       </div>

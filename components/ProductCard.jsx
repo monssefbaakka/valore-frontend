@@ -22,7 +22,7 @@ export default function ProductCard({ product }) {
             <Star className="w-4 h-4 fill-current" />
             <span className="text-[#A1A1AA] text-sm ml-1 font-medium">{product.rating}</span>
           </div>
-          <span className="text-[#A1A1AA] text-sm">({product.reviews} avis)</span>
+          <span className="text-[#A1A1AA] text-sm">({product.reviews} reviews)</span>
         </div>
         
         <div className="mt-auto flex items-center justify-between border-t border-zinc-800/50 pt-6 stitch-border">
@@ -31,7 +31,7 @@ export default function ProductCard({ product }) {
             href={`/shop/${product.id}`}
             className="text-sm uppercase tracking-widest font-semibold text-[#A1A1AA] hover:text-[#00D1FF] transition-colors glow-text-hover"
           >
-            Découvrir
+            Discover
           </Link>
         </div>
       </div>

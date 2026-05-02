@@ -12,25 +12,25 @@ export default function Footer() {
         </div>
         
         <div>
-          <h3 className="font-bold text-white uppercase tracking-wider mb-4">Liens</h3>
+          <h3 className="font-bold text-white uppercase tracking-wider mb-4">Links</h3>
           <ul className="space-y-3">
-            <li><Link href="/shop" className="text-zinc-400 hover:text-primary-light transition-colors">Boutique</Link></li>
+            <li><Link href="/shop" className="text-zinc-400 hover:text-primary-light transition-colors">Shop</Link></li>
             <li><Link href="/studio" className="text-zinc-400 hover:text-primary-light transition-colors">Studio</Link></li>
-            <li><Link href="/login" className="text-zinc-400 hover:text-primary-light transition-colors">Espace Client</Link></li>
+            <li><Link href="/login" className="text-zinc-400 hover:text-primary-light transition-colors">Client Portal</Link></li>
           </ul>
         </div>
 
         <div>
-          <h3 className="font-bold text-white uppercase tracking-wider mb-4">Légal</h3>
+          <h3 className="font-bold text-white uppercase tracking-wider mb-4">Legal</h3>
           <ul className="space-y-3">
-            <li><Link href="#" className="text-zinc-400 hover:text-primary-light transition-colors">Mentions Légales</Link></li>
-            <li><Link href="#" className="text-zinc-400 hover:text-primary-light transition-colors">CGV</Link></li>
+            <li><Link href="#" className="text-zinc-400 hover:text-primary-light transition-colors">Legal Notice</Link></li>
+            <li><Link href="#" className="text-zinc-400 hover:text-primary-light transition-colors">Terms of Sale</Link></li>
             <li><Link href="#" className="text-zinc-400 hover:text-primary-light transition-colors">Contact</Link></li>
           </ul>
         </div>
       </div>
       <div className="container mx-auto px-6 mt-16 pt-8 border-t border-zinc-900 flex flex-col md:flex-row items-center justify-between">
-        <p className="text-zinc-600 text-sm">© {new Date().getFullYear()} Veloir. Tous droits réservés.</p>
+        <p className="text-zinc-600 text-sm">© {new Date().getFullYear()} Veloir. All rights reserved.</p>
         <p className="text-zinc-600 text-sm mt-2 md:mt-0">Made with ❤️ by @drogow</p>
       </div>
     </footer>
